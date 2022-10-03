@@ -1,0 +1,12 @@
+IMPLEMENTED:
+
+toDecimal
+basic classes
+memory
+seeMemoryID
+toHex
+
+
+to-do:
+debug
+comment
