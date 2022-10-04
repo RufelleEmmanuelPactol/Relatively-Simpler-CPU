@@ -1,7 +1,6 @@
 #pragma once
-#include "lib.h"
 #include "numsys.h"
-
+#include "lib.h"
 class Display {
   Memory * memory;
   NumSys * numsys;
@@ -45,7 +44,7 @@ public:
             localMem.RAM = memory->RAM;
             int start = 0;
             int spacing = 1;
-            for (int i=1; i<=4; i++){
+            for (int i=1; i<=8; i++){
                 int arr[4] = {localMem.RAM[i+start], localMem.RAM[i+start+1], localMem.RAM[i+start+2], localMem.RAM[i+start+3]};
                 char disp = numsys->toHex(arr);
                 start+=4;
@@ -66,3 +65,5 @@ public:
 
 
 };
+
+
