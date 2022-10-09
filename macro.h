@@ -5,7 +5,7 @@
 #define debugp std::cout << "PASS" << std::endl
 const int capacity = 256*8;
 
-
+#define incr (*PC)++
 #include "memory.h" // contains the 256-byte memory and register memory
 #include "display.h" // displays basic elements: seeMemory, seeMemoryID
 //#include "numsys.h" // contains numsys conversions

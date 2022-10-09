@@ -11,11 +11,18 @@ Interfaces and hierarchy:
 
  rscpu.h command return types
 
+    memory commands:
+    1. clearMemoryAll(); void
+    2. numToAC(); void
+    3. numToR();
+
     display commands:
     1. seeMemoryID(); void
     2. seeMemoryHex(); void
     3. seeMemory();  void
     4. seeZ(); void
+    5. seeAC(); void
+    6. seeR(); void
 
     numsys commands:
     1. toDecimal(int * arr, int size) - int
@@ -29,7 +36,10 @@ Interfaces and hierarchy:
 
     commands:
         BASIC commands:                             upon conversion to interface.h
-        1. PUTS(int num, int address) - void        - no conversions needed                                         - DB
+        1. PUTS(int num, int address) - void        - address must be where the AR is pointing                      - DB
         2. GETS (int address) - int ptr             - must replace return int * ptr with AC                         - LDAC
         3. ADD (int a, int b) - int                 - set a to AC and b to R, and return set to binary to AC        - ADD
         4. SAVE (int * num, int address)            - change num to AC's address                                    - STAC
+        5. TOR ()                                   - no conversion                                                 - MVAC
+        6. TOAC ()                                  - no conversion                                                 - MOVR
+        7. ORG()

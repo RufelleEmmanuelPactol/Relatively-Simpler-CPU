@@ -89,6 +89,36 @@ public:
     void SAVE (int * num, int address){
         return basic->SAVE(num, address);
     }
+
+    void TOAC (){
+        return basic->TOAC();
+    }
+
+    void TOR(){
+        return basic->TOR();
+    }
+
+    void numToAC(int * arr){
+        return memory->numToAC(arr);
+    }
+
+    void seeR(){
+        return display->seeR();
+    }
+
+    void seeAC(){
+        return display->seeAC();
+    }
+
+    void seePC(){
+        return display->seePC();
+    }
+
+    void ORG(int num){
+        return basic->ORG(num);
+    }
+
+
 };
 
 #endif

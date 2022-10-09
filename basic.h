@@ -55,4 +55,27 @@ public:
         return;
     }
 
+    void TOR (){
+        int * ac = memory->AC;
+        int * r =  memory->R;
+        for (int i=0; i<8; i++){
+            *(r+i) = *(ac+i);
+        }
+        return;
+    }
+
+    void TOAC (){
+        int * ac = memory->AC;
+        int * r =  memory->R;
+        for (int i=0; i<8; i++){
+            *(ac+i) = *(r+i);
+        }
+        return;
+    }
+
+    void ORG (int num){
+        memory->PC = num;
+        return;
+    }
+
 };

@@ -80,6 +80,28 @@ public:
         return;
     }
 
+    void seeAC (){
+        for (int i=0; i<8; i++){
+            std::cout << *(memory->AC+i) << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    void seeR (){
+        for (int i=0; i<8; i++){
+            std::cout << *(memory->R+i) << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    void seePC (){
+        int pc = memory->PC;
+        int * arr = new int[8];
+        numsys->decimalToBinary(pc, arr);
+        debug->printArray(arr, 8);
+
+    }
+
 
 };
 

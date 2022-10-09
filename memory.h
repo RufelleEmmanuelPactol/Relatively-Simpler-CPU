@@ -19,6 +19,7 @@ public:
     int * AC;
     int * R;
     int Z;
+    int PC;
     int * commandList; //stores all commands
     char * errorString; // stores all errors
     char ** error; //index pointer to errors
@@ -29,6 +30,7 @@ public:
         AC = new int[8];
         R = new int[8];
         Z = 0;
+        PC = 0;
         commandList = new int[256*8];
         errorString = new char[100*100];
         error = new char*[100];
@@ -57,6 +59,12 @@ public:
             error[i] = errorString+(i*100);
         }
 
+    }
+
+    void numToAC (int * arr){
+        for (int i=0; i<8; i++){
+            *(AC+i) = *(arr+i);
+        }
     }
 
 };
