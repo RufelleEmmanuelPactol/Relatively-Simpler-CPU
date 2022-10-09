@@ -1,4 +1,4 @@
-#Interfaces and hierarchy:
+# Interfaces and hierarchy:
 
                         main.cpp                            - command starting point
                         terminal.h                          - reads user input
@@ -9,7 +9,7 @@
                   macro.h       lib.h                       - contains header files #include
 
 
-# rscpu.h command return types
+## rscpu.h command return types
 
     display commands:
     1. seeMemoryID(); void
