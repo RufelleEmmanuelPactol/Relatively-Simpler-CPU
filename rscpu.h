@@ -9,6 +9,9 @@ class Rscpu {
     Memory * memory;
     Display * display;
     NumSys * numsys;
+    Basic * basic;
+    Debug * debug;
+    Commands * commands;
 
 public:
     Rscpu(){
@@ -16,15 +19,24 @@ public:
         display = new Display(memory);
         numsys = new NumSys(memory);
         binaryArray = new int[8];
-
+        debug = new Debug(memory);
+        basic = new Basic(memory);
+    }
+    Rscpu(Memory * memory1){
+        memory = memory1;
+        display = new Display(memory);
+        numsys = new NumSys(memory);
+        binaryArray = new int[8];
+        debug = new Debug(memory);
+        basic = new Basic(memory);
     }
 
     void seeMemoryID(){ //display.h
         display->seeMemoryID();
     }
 
-    int toDecimal(int * arr, int size){ // numsys.h
-        return numsys->toDecimal(arr, size);
+    int binaryToDecimal(int * arr){ // numsys.h
+        return numsys->binaryToDecimal(arr);
     }
 
     char toHex(int * arr){  //numsys.h
@@ -50,12 +62,32 @@ public:
         return result;
     }
 
-    void printArray (int * arr, int size){
-        numsys->printArray(arr, size);
+    void printArray (int * arr, int size){ //debug.h
+        debug->printArray(arr, size);
     }
 
-    int digits (int num){
+    int digits (int num){ //numsys.h
         return numsys->digits(num);
+    }
+
+    void PUTS (int num, int address){
+        basic->PUTS(num, address);
+    }
+
+    int * GETS (int address){
+        return basic->GETS(address);
+    }
+
+    void seeZ (){
+        return display->seeZ();
+    }
+
+    int ADD (int * a, int * b){
+        return basic->ADD(a, b);
+    }
+
+    void SAVE (int * num, int address){
+        return basic->SAVE(num, address);
     }
 };
 
