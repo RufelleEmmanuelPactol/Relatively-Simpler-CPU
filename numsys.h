@@ -2,10 +2,11 @@
 #ifndef lib_h
 #define lib_h
 #include "lib.h"
-#include "macro.h"
+#include "debug.h"
 
 class NumSys{
     Memory * memory;
+    Debug * debug;
 public:
 
     NumSys(){
@@ -13,9 +14,21 @@ public:
     }
     NumSys (Memory * temp){
         memory = temp;
+        debug = new Debug (memory);
     }
 
-    int toDecimal(int * arr, int size){
+    int binaryToDecimal (int * arr){
+        int sum = 0;
+        int ctr = 7;
+        for (int i=0; i<8; i++){
+            int factor = pow(2, ctr);
+            ctr--;
+            sum = factor*arr[i] + sum;
+        }
+        return sum;
+    }
+
+    /*int toDecimal(int * arr, int size){   -> legacy method, needs to be changed
         int sum = 0;
         int ctr = 0;
         for (int i=size-1; i>=0; i--){
@@ -26,21 +39,29 @@ public:
         }
         return sum;
 
-    }
+    } */
+
+
 
     char toHex (int * arr){
-        int returning = toDecimal(arr, 4);
+        debug->printArray(arr, 4);
+        return 'c';
+       // int returning = toDecimal(arr, 4); -> must change
+       int returning = 100;
         if (returning<10){
-            return returning+48;
+            char r = (char)returning+48;
+            return r;
         }
         else{
-            return returning+55;
+            char r = char(returning+55);
+            return r;
         }
     }
 
     void decimalToBinary (int decimal, int * arr){
         if (decimal>255){
-            return;
+            std::cout << "error assembling, selected data " << decimal <<" beyond bounds.";
+            exit(42);
         }
         for (int i=0; i<8; i++){
             arr[i] = 0;
@@ -94,13 +115,7 @@ public:
         return sum;
     }
 
-    void printArray (int * arr, int size){
-        for (int i=0; i<size; i++){
-        std::cout << arr[i];
-        }
-        std::cout << std::endl;
-        return;
-    }
+
 
     int digits (int num){
         int d = 1;
