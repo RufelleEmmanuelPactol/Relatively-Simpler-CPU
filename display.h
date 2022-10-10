@@ -102,6 +102,42 @@ public:
 
     }
 
+    void viewReg (){
+        std::cout << "AC - ";
+        for (int i=0; i<8; i++){
+            std::cout << *(memory->AC+i) << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "R - ";
+        for (int i=0; i<8; i++){
+            std::cout << *(memory->R+i) << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "FLAG - ";
+        std::cout << memory->Z;
+        std::cout << std::endl;
+        std::cout << "PC - ";
+        int binarr[8];
+        numsys->decimalToBinary(memory->PC, binarr);
+        for (int i=0; i<8; i++){
+            std::cout << *(binarr+i) << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    void vmem (int num){
+        int cap = 8*num;
+        for (int i=0; i<20; i++){
+            std::cout << num << "\t";
+            for (int j=0; j<8; j++){
+                std::cout << *(memory->RAM+cap) << " ";
+                cap++;
+            }
+            num++;
+            std::cout << std::endl;
+        }
+    }
+
 
 };
 

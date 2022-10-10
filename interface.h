@@ -5,14 +5,18 @@
 
 
 #ifndef UNTITLED7_INTERFACE_H
+#define incrp (*PC)++
 class Interface {
     Memory * memory;
     Rscpu * rscpu;
     int * PC;
 public:
 
-    Interface () {
-        memory = new Memory();
+    Interface (){
+
+    }
+
+    Interface (Memory * memory) {
         rscpu = new Rscpu(memory);
         PC = &(memory->PC);
     }
@@ -25,21 +29,22 @@ public:
         int res = rscpu->ADD(memory->AC, memory->R);
         int * arr = rscpu->decimalToBinary(res);
         rscpu->numToAC(arr);
-        rscpu->PUTS(8, *PC);
+        PUTS(8);
+        PUTS(0);
         return;
     }
 
     void LOAD (int num){
         int * arr = rscpu->GETS(num);
         rscpu->numToAC(arr);
-        rscpu->PUTS(1, *PC);
-        rscpu->PUTS(num, *PC);
+        PUTS(1);
+        PUTS(num);
         return;
     }
 
     void PUTS (int num){
         rscpu->PUTS(num, *PC);
-        incr;
+        incrp;
         return;
     }
 
@@ -57,12 +62,19 @@ public:
     void TOR (){
         rscpu->TOR();
         PUTS(5);
+        PUTS(0);
         return;
     }
 
     void TOAC(){
         rscpu->TOAC();
+        PUTS(4);
+        PUTS(0);
         return;
+    }
+
+    void INCR(){
+        rscpu->INCR();
     }
 
 

@@ -1,8 +1,13 @@
-#include "interface.h"
+
+#include "terminal.h"
 
 int main (){
-    auto * interface = new Interface();
-    Memory * memory = interface->getMemory();
-    auto * rscpu = new Rscpu(memory);
+    Memory * memory = new Memory();
+    Cmd * terminal = new Cmd(memory);
+    Rscpu * rscpu = new Rscpu(memory);
+    terminal->scan();
+    rscpu->seeMemoryID();
+
+
     return 0;
 }

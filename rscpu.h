@@ -118,6 +118,30 @@ public:
         return basic->ORG(num);
     }
 
+    void strtolower (char * str){
+        numsys->strtolower(str);
+        return;
+    }
+
+    void viewReg (){
+        display->viewReg();
+    }
+
+    void INCR (){
+        int arr[8];
+        for (int i=0; i<8; i++){
+            arr[i] = *(memory->AC+i);
+        }
+        int num = numsys->binaryToDecimal(arr);
+        num++;
+        numsys->decimalToBinary(num, arr);
+        numToAC(arr);
+    }
+
+    void vmem (int num){
+        display->vmem(num);
+        return;
+    }
 
 };
 

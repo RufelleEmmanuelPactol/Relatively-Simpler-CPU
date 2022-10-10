@@ -3,6 +3,7 @@
 #define lib_h
 #include "lib.h"
 #include "debug.h"
+#include <ctype.h>
 
 class NumSys{
     Memory * memory;
@@ -125,6 +126,16 @@ public:
         }
         return d;
     }
+
+    void strtolower(char * str){
+        int i=0;
+        while (str[i]){
+            str[i] = tolower(str[i]);
+            i++;
+        }
+        return;
+    }
+
 };
 
 #endif
