@@ -4,7 +4,7 @@
 #define macro
 #define errorcode 255
 #define debugp std::cout << "PASS" << std::endl
-const int capacity = 256*8;
+
 
 
 #define noop 999

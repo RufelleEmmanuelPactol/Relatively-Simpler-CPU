@@ -127,7 +127,13 @@ public:
 
     void vmem (int num){
         int cap = 8*num;
-        for (int i=0; i<20; i++){
+        for (int i=0; i<10; i++){
+            if (num>10){
+                std::cout << "0";
+            }
+            if (num<100){
+                std::cout << "0";
+            }
             std::cout << num << "\t";
             for (int j=0; j<8; j++){
                 std::cout << *(memory->RAM+cap) << " ";

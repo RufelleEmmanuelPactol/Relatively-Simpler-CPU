@@ -20,8 +20,8 @@ public:
 
     void PUTS (int num, int address){
         if (address>255){
-            std::cout << "error assembling, selected address " << address << " beyond bounds.";
-            exit(42);
+            std::cout << "error assembling, selected address " << address << " beyond bounds.\n";
+            memory->line++;
             return;
         }
         int * arr = new int[8];

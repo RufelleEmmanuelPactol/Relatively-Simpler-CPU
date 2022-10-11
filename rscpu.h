@@ -15,12 +15,7 @@ class Rscpu {
 
 public:
     Rscpu(){
-        memory = new Memory();
-        display = new Display(memory);
-        numsys = new NumSys(memory);
-        binaryArray = new int[8];
-        debug = new Debug(memory);
-        basic = new Basic(memory);
+        std::cout << "wrong pass\n";
     }
     Rscpu(Memory * memory1){
         memory = memory1;

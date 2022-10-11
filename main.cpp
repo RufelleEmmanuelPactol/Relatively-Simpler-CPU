@@ -7,7 +7,7 @@ int main (){
     Rscpu * rscpu = new Rscpu(memory);
     terminal->scan();
     rscpu->seeMemoryID();
-
+	getchar();
 
     return 0;
 }

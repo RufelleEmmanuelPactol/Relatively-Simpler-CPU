@@ -1,6 +1,7 @@
 #ifndef memory_h
 #define memory_h
 #include "lib.h"
+const int capacity = 256*8;
 
 
 
@@ -20,22 +21,17 @@ public:
     int * R;
     int Z;
     int PC;
-    int * commandList; //stores all commands
-    char * errorString; // stores all errors
-    char ** error; //index pointer to errors
-    int commandAC; //stores which index the last command is at
-    int errorAC; //stores which index the last error is at
+    int AR;
+    int line;
     Memory (){
         RAM = new int[256*8];
         AC = new int[8];
         R = new int[8];
+        AR = 0;
         Z = 0;
         PC = 0;
-        commandList = new int[256*8];
-        errorString = new char[100*100];
-        error = new char*[100];
-        commandAC = 0;
-        errorAC = 0;
+        line = 1;
+
 
         clearMemoryAll();
     }
@@ -51,12 +47,6 @@ public:
 
         for (int i=0; i<8; i++){
             *(R+i) = 0;
-        }
-        for (int i=0; i<capacity; i++){
-            commandList[i] = 0;
-        }
-        for (int i=0; i<100; i++){
-            error[i] = errorString+(i*100);
         }
 
     }

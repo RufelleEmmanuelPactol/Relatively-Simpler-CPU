@@ -61,8 +61,8 @@ public:
 
     void decimalToBinary (int decimal, int * arr){
         if (decimal>255){
-            std::cout << "error assembling, selected data " << decimal <<" beyond bounds.";
-            exit(42);
+            std::cout << "error assembling, selected data " << decimal <<" beyond bounds.\n";
+            memory->line++;
         }
         for (int i=0; i<8; i++){
             arr[i] = 0;
