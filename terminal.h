@@ -289,7 +289,7 @@ public:
                 int * tem = rscpu->GETS(local->AR+1);
                 address = rscpu->binaryToDecimal(tem);
             }
-
+         // DEBUG:   std::cout << "NOW COMPILING OPCODE " << currnum << " where the AR is pointing at " << local->AR << std::endl;
             if (currnum==1){
                 if (address==255){
                     std::cout << "error compiling on LOAD, no operand specified.\n";
@@ -348,7 +348,7 @@ public:
                     return;
                 }
                 advanced->JPOS(address);
-                local->AR = local->AR+2;
+                local->AR = local->AR-2;
             }
             if (currnum==34){
                 if (address==255){
@@ -356,7 +356,7 @@ public:
                     return;
                 }
                 advanced->JNEG(address);
-                local->AR = local->AR+2;
+                local->AR = local->AR-2;
             }
             if (local->AR>253){
                 std::cout << "failed to compile, no \"end\" command detected, AR out of bounds\n";

@@ -24,7 +24,7 @@ public:
         memory->AR = num;
         memory->PC = num;
         basic->ORG(num);
-        //std::cout << "JUMPED! NOW AT " << memory->AR <<std::endl;
+     // DEBUG:   std::cout << "JUMPED! NOW AT " << memory->AR <<std::endl;
     }
 
     void JNEG (int num){
