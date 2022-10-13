@@ -3,8 +3,8 @@
 
 int main (){
     Memory * memory = new Memory();
-    Cmd * terminal = new Cmd(memory);
     Rscpu * rscpu = new Rscpu(memory);
+    Cmd * terminal = new Cmd(memory);
     terminal->scan();
     rscpu->seeMemoryID();
 	getchar();

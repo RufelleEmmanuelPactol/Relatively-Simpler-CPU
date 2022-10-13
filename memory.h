@@ -48,6 +48,8 @@ public:
         for (int i=0; i<8; i++){
             *(R+i) = 0;
         }
+        AR = 0;
+        PC = 0;
 
     }
 

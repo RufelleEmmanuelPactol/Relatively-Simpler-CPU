@@ -46,6 +46,7 @@ public:
             }
             else{
                 std::cin >>temp;
+
             }
 
 

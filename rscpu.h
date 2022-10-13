@@ -6,7 +6,6 @@
 
 class Rscpu {
     int * binaryArray;
-    Memory * memory;
     Display * display;
     NumSys * numsys;
     Basic * basic;
@@ -14,6 +13,7 @@ class Rscpu {
     Commands * commands;
 
 public:
+    Memory * memory;
     Rscpu(){
         std::cout << "wrong pass\n";
     }
