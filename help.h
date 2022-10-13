@@ -38,7 +38,7 @@ void aboutterminalcommands(int n){
         std::cout << spc << "$vmem is a one operand terminal command that takes in an integer value from 0 to 245." << spc << "It displays 10 RAM values starting from the address of the inputted integer.\n";
     }
     if (n==4){
-        std::cout << spc << "$mem is a terminal command that displays all the values inside the ram\n";
+        std::cout << spc << "$cmem is a terminal command that displays all the values inside the ram\n";
     }
     if (n==5){
         std::cout << spc << "$vreg is a terminal command that displays all the values of the registers\n";
@@ -53,7 +53,7 @@ void aboutterminalcommands(int n){
 }
 
 void terminalcommands(){
-    std::cout << "\tLearn more about: "<< spc << "1. $start" << spc << "2. $clr" << spc << "3. $vmem" << spc << "4. $mem" << spc << "5. $vreg" << spc << "6. --r" << spc "7. --t" << spc << "Enter command: ";
+    std::cout << "\tLearn more about: "<< spc << "1. $start" << spc << "2. $clr" << spc << "3. $vmem" << spc << "4. $cmem" << spc << "5. $vreg" << spc << "6. --r" << spc "7. --t" << spc << "Enter command: ";
     int n;
     std::cin >> n;
     aboutterminalcommands(n);

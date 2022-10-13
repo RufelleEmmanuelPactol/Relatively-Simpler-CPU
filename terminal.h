@@ -7,6 +7,7 @@
 #include "interface.h"
 #include <cstring>
 #include "help.h"
+#include "advance.h"
 #ifndef UNTITLED7_TERMINAL_H
 #define UNTITLED7_TERMINAL_H
 #define so sizeof(string)
@@ -21,6 +22,7 @@ public:
     Interface * interface;
     Rscpu * rscpu;
     Memory * local;
+    Advanced * advanced;
     char * timedeets;
     Cmd (){
     }
@@ -33,6 +35,7 @@ public:
         rmv = new int;
         debug = new Debug (memory);
         timedeets = ctime(&tmd);
+        advanced = new Advanced(memory);
     }
 
     void scan (){
@@ -57,10 +60,6 @@ public:
             conv(command, temp);
 
             line++;
-            if (local->AR>250){
-                std::cout  << "failed to compile, no \"end\" command detected, AR out of bounds\n";
-                return;
-            }
         }
         while (strcmp(command, "--t"));
     }
@@ -167,6 +166,69 @@ public:
             interface->PUTS(0);
             return;
         }
+
+        if (!strcmp(command, "jump")){
+            if (isnoop()){
+                interface->PUTS(32);
+                interface->PUTS(255);
+                return;
+            }
+            interface->PUTS(32);
+            interface->PUTS(address);
+            return;
+        }
+
+        if (!strcmp(command, "jneg")){
+            if (isnoop()){
+                interface->PUTS(34);
+                interface->PUTS(255);
+                return;
+            }
+            interface->PUTS(34);
+            interface->PUTS(address);
+            return;
+        }
+        if (!strcmp(command, "jpos")){
+            if (isnoop()){
+                interface->PUTS(33);
+                interface->PUTS(255);
+                return;
+            }
+            interface->PUTS(33);
+            interface->PUTS(address);
+            return;
+        }
+        if (!strcmp(command, "comp")){
+            interface->PUTS(16);
+            interface->PUTS(0);
+            return;
+        }
+        if (!strcmp(command, "equa")){
+            interface->PUTS(17);
+            interface->PUTS(0);
+            return;
+        }
+        if (!strcmp(command, "sub")){
+            interface->PUTS(9);
+            interface->PUTS(0);
+            return;
+        }
+        if (!strcmp(command, "mult")){
+            interface->PUTS(12);
+            interface->PUTS(0);
+            return;
+        }
+        if (!strcmp(command, "exp")){
+            interface->PUTS(11);
+            interface->PUTS(0);
+            return;
+        }
+        if (!strcmp(command, "not")){
+            interface->PUTS(10);
+            interface->PUTS(0);
+            return;
+        }
+
         if (!strcmp(command, "--t")){
             return;
         }
@@ -254,7 +316,53 @@ public:
             if (currnum==63){
                 interface->INCR();
             }
-
+            if (currnum==9){
+                advanced->SUB();
+            }
+            if (currnum==10){
+                advanced->NOT();
+            }
+            if (currnum==11){
+                advanced->EXP();
+            }
+            if (currnum==12){
+                advanced->MULT();
+            }
+            if (currnum==16){
+                advanced->COMP();
+            }
+            if (currnum==17){
+                advanced->EQUA();
+            }
+            if (currnum==32){
+                if (address==255){
+                    std::cout << "error compiling on JUMP, no operand specified.\n";
+                    return;
+                }
+                advanced->JUMP(address);
+                local->AR = local->AR-2;
+            }
+            if (currnum==33){
+                if (address==255){
+                    std::cout << "error compiling on JPOS, no operand specified.\n";
+                    return;
+                }
+                advanced->JPOS(address);
+                local->AR = local->AR+2;
+            }
+            if (currnum==34){
+                if (address==255){
+                    std::cout << "error compiling on JNEG, no operand specified.\n";
+                    return;
+                }
+                advanced->JNEG(address);
+                local->AR = local->AR+2;
+            }
+            if (local->AR>253){
+                std::cout << "failed to compile, no \"end\" command detected, AR out of bounds\n";
+                return;
+            }
+           // std::cout << "WE ARE NOW AT ADDRESS " << local->AR << " currently performing " << currnum <<  std::endl;
             local->AR = local->AR+2;
         }
         return;
@@ -265,7 +373,7 @@ public:
     }
 
     void ver(){
-        std::cout << "relatively simpler cpu ver 0.2.1 \n(c)great taste black, 2022\ncompiler build 0.2.1\n";
+        std::cout << "relatively simpler cpu ver 1.0.0 \n(c)great taste black, 2022\ncompiler build 0.9.1\n";
         line +=3;
     }
 

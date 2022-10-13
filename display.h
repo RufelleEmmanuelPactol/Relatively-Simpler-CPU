@@ -17,7 +17,7 @@ public:
         debug = new Debug(memory);
     }
 
-    void seeMemoryID(){
+  /*  void seeMemoryID(){
         for (int i=0; i<256; i++){
             if (i<10){
                 std::cout << "0";
@@ -26,7 +26,7 @@ public:
                 std::cout << "0";
             }
 
-            std::cout << i << "\t";
+            std::cout << i <<    " ";
             int * target = memory->RAM;
             int factor = 8*i;
             for (int j=0; j<8; j++){
@@ -34,7 +34,126 @@ public:
             }
             std::cout << std::endl;
         }
-    }
+    }*/
+    
+    void seeMemoryID(){
+    	int a = 0, b = 32, c = 64, h = 96, d = 128, e = 160, f = 192, g = 224;
+    	for (int i=0; i<32; i++){
+    	//	std::cout << "NOW AT I: "<< i <<    " ";
+//    		std::cout << "a: ";
+    		if (a+i<10){
+    			std::cout << "0";
+			}
+			if (a+i<100){
+				std::cout << "0";
+			}
+    		std::cout << a+i <<    " ";
+    		for (int j=1; j<=8; j++){
+    			int target = ((a+i)*8);
+    			std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+			}
+//			std::cout << "b: ";
+			std::cout <<    " ";
+			if (b+i<100){
+				std::cout << "0";
+			}
+    		std::cout << b+i <<    " ";
+            for (int j=1; j<=8; j++){
+                int target = ((b+i)*8);
+                std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+            }
+//			std::cout << "c: ";
+			std::cout <<    " ";
+			
+			if (c+i<100){
+				std::cout << "0";
+			}
+    		std::cout << c+i <<    " ";
+            for (int j=1; j<=8; j++){
+                int target = ((c+i)*8);
+                std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+            }
+            std::cout <<    " ";
+            if (h+i<100){
+                std::cout << "0";
+            }
+            std::cout << h+i <<    " ";
+            for (int j=1; j<=8; j++){
+                int target = ((h+i)*8);
+                std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+            }
+//			std::cout << "d: ";
+			std::cout <<    " ";
+			
+			if (d+i<100){
+				std::cout << "0";
+			}
+    		std::cout << d+i <<    " ";
+            for (int j=1; j<=8; j++){
+                int target = ((d+i)*8);
+                std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+            }
+//			std::cout << "e: ";
+			std::cout <<    " ";
+			
+			if (e+i<100){
+				std::cout << "0";
+			}
+    		std::cout << e+i <<    " ";
+            for (int j=1; j<=8; j++){
+                int target = ((e+i)*8);
+                std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+            }
+//			std::cout << "f: ";
+			std::cout <<    " ";
+			
+			if (f+i<100){
+				std::cout << "0";
+			}
+    		std::cout << f+i <<    " ";
+            for (int j=1; j<=8; j++){
+                int target = ((f+i)*8);
+                std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+            }
+//			std::cout << "g: ";
+			std::cout <<    " ";
+			
+			if (g+i<100){
+				std::cout << "0";
+			}
+    		std::cout << g+i <<    " ";
+            for (int j=1; j<=8; j++){
+                int target = ((g+i)*8);
+                std::cout << *(memory->RAM+target+j-1);
+                if (j%4==0){
+                    std::cout << " ";
+                }
+            }
+			
+			std::cout << std::endl;
+		}
+	}
 
     void seeMemoryHex(){
         for (int bytes = 0; bytes < 256; bytes+=4){
@@ -44,7 +163,7 @@ public:
             if (bytes<100){
                //   std::cout << "0";
             }
-               // std::cout << bytes << "\t";
+               // std::cout << bytes <<    " ";
             int * target = memory->RAM;
             target+=bytes;
             int start = 0;
@@ -123,6 +242,12 @@ public:
             std::cout << *(binarr+i) << " ";
         }
         std::cout << std::endl;
+        std::cout << "AR - ";
+        numsys->decimalToBinary(memory->PC, binarr);
+        for (int i=0; i<8; i++){
+            std::cout << *(binarr+i) << " ";
+        }
+        std::cout << std::endl;
     }
 
     void vmem (int num){
@@ -134,7 +259,7 @@ public:
             if (num<100){
                 std::cout << "0";
             }
-            std::cout << num << "\t";
+            std::cout << num <<    " ";
             for (int j=0; j<8; j++){
                 std::cout << *(memory->RAM+cap) << " ";
                 cap++;
