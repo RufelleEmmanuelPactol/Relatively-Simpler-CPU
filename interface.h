@@ -6,7 +6,8 @@
 
 #ifndef UNTITLED7_INTERFACE_H
 #define incrp (*PC)++
-class Interface {
+class Interface
+ {
     Memory * memory;
     Rscpu * rscpu;
     int * PC;
@@ -20,13 +21,16 @@ public:
         rscpu = localrs;
         PC = &(memory->PC);
     }
+    Interface (Memory * memory){
+        PC = &(memory->PC);
+    }
 
     Memory * getMemory (){
         return memory;
     }
 
     void ADD (){
-        int res = rscpu->ADD(memory->AC, memory->R);
+        int res = rscpu->ADD(rscpu->memory->AC, rscpu->memory->R);
         int * arr = rscpu->decimalToBinary(res);
         rscpu->numToAC(arr);
         return;
@@ -50,7 +54,7 @@ public:
     }
 
     void SAVE (int address){
-        rscpu->SAVE(memory->AC, address);
+        rscpu->SAVE(rscpu->memory->AC, address);
     }
 
     void TOR (){

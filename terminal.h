@@ -6,6 +6,7 @@
 #include "lib.h"
 #include "interface.h"
 #include <cstring>
+#include "help.h"
 #ifndef UNTITLED7_TERMINAL_H
 #define UNTITLED7_TERMINAL_H
 #define so sizeof(string)
@@ -14,6 +15,7 @@
     int * rmv;
     time_t tmd;
     Debug * debug;
+
 public:
     NumSys * numsys;
     Interface * interface;
@@ -46,6 +48,7 @@ public:
             }
             else{
                 std::cin >>temp;
+
             }
 
 
@@ -182,9 +185,35 @@ public:
     }
 
     void help(){
-        std::cout << "help function under construction, build no 0.0.1\n";
-        line++;
-        return;
+    	std::cout << std::endl << "(c) 2022, Great Taste Black";
+        std::cout << std:: endl << "Select Help Menu: \n";
+        std::cout << "1: About Relatively Simpler CPU\n";
+        std::cout << "2: Terminal Commands\n";
+        std::cout << "3: Directives\n";
+        std::cout << "4: RSimplerCPU Commands\n";
+        std::cout << "5: Exit help menu\n";
+        int ans;
+        std::cout << "Enter command: ";
+        std::cin >> ans;
+        if (ans==5){
+            return;
+        }
+        if (ans==1){
+            aboutrscpu();
+            help();
+        }
+        if (ans==2){
+            terminalcommands();
+            help();
+        }
+        if (ans==3){
+            directives();
+            help();
+        }
+        if (ans==4){
+            commands();
+            help();
+        }
     }
     void comp (){
         int currnum = 0;
@@ -236,7 +265,7 @@ public:
     }
 
     void ver(){
-        std::cout << "relatively simpler cpu ver 0.2.1 \n(c)great taste black, 2022\ncompiler build 0.0.1\n";
+        std::cout << "relatively simpler cpu ver 0.2.1 \n(c)great taste black, 2022\ncompiler build 0.2.1\n";
         line +=3;
     }
 
