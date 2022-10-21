@@ -24,19 +24,30 @@ public:
         memory->AR = num;
         memory->PC = num;
         basic->ORG(num);
-     // DEBUG:   std::cout << "JUMPED! NOW AT " << memory->AR <<std::endl;
+      //DEBUG:   std::cout << "JUMPED! NOW AT " << memory->AR <<std::endl;
     }
 
     void JNEG (int num){
         if (memory->Z==0){
+
+
             return JUMP(num);
         }
+        else{
+            //DEBUG: std::cout << "DID NOT JNEG BECAUSE " << memory->Z << std::endl;
+            memory->AR+=2;
+        }
+
         return;
     }
 
     void JPOS (int num){
-        if (memory->Z){
+        if (memory->Z==1){
             return JUMP(num);
+        }
+        else{
+            //DEBUG: std::cout << "DID NOT JPOS BECAUSE " << memory->Z << std::endl;
+            memory->AR+=2;
         }
         return;
     }

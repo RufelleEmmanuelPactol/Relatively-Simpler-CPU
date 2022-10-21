@@ -19,7 +19,7 @@ void buffer (){
 void aboutrscpu (){
 	std::cout << "\t" << "Relatively Simpler CPU, otherwise known as RSimplerCPU is an ASM emulator designed for education.";
 	std::cout <<"\n\tNot only is the syntax simpler to understand as it heavily borrows from modern English,\n";
-	std::cout <<"\tthe RSimplerCPU also heavily abstracts instructions through no-operannd commands while giving its users \n";
+	std::cout <<"\tthe RSimplerCPU also heavily abstracts instructions through no-operand commands while giving its users \n";
 	std::cout <<"\tthe feel and look of ASM.\n";
     std::cout << "\n\n" << "Registers and Memory:" << spc << "256-byte memory" << spc << "AC - Accumulator, 8 bits" << spc << "R - General Purpose Register, 8 bits" << spc << "AR - Address Register, 8 bits" << spc << "PC - Program Counter, 8 bits" << spc << "Z Flag, 1 bit\n";
 	buffer();

@@ -8,10 +8,15 @@
 #include <cstring>
 #include "help.h"
 #include "advance.h"
+#include <string>
+#include <cstring>
+#include <ctype.h>
 #ifndef UNTITLED7_TERMINAL_H
 #define UNTITLED7_TERMINAL_H
 #define so sizeof(string)
 #define line local->line
+#include <windows.h>
+
  class Cmd {
     int * rmv;
     time_t tmd;
@@ -42,6 +47,7 @@ public:
         setup();
         char command [1000];
         int temp;
+        std::string  ctemp;
         do{
             std::cout << ">>>\t";
 			std::cin >> command;
@@ -50,7 +56,18 @@ public:
                 temp = noop;
             }
             else{
-                std::cin >>temp;
+                std::cin >>ctemp;
+                for (int i=0; i<ctemp.size(); i++){
+                	if (!ctemp[i]>='0'&&!ctemp[i]<='9'){
+                		std::cout << "in line " << line << " character instead of int address input.\n";
+					}
+				}
+                temp = std::atoi(ctemp.c_str());
+                if(temp>255){
+                    std::cout << "in line " << line << " incorrect numerical input.\n";
+                    temp = 0;
+                    continue;
+                }
 
             }
 
@@ -289,7 +306,7 @@ public:
                 int * tem = rscpu->GETS(local->AR+1);
                 address = rscpu->binaryToDecimal(tem);
             }
-         // DEBUG:   std::cout << "NOW COMPILING OPCODE " << currnum << " where the AR is pointing at " << local->AR << std::endl;
+         //DEBUG:   std::cout << "NOW COMPILING OPCODE " << currnum << " where the AR is pointing at " << local->AR << std::endl;
             if (currnum==1){
                 if (address==255){
                     std::cout << "error compiling on LOAD, no operand specified.\n";
@@ -373,7 +390,7 @@ public:
     }
 
     void ver(){
-        std::cout << "relatively simpler cpu ver 1.0.0 \n(c)great taste black, 2022\ncompiler build 0.9.1\n";
+        std::cout << "relatively simpler cpu ver 1.1.0 \n(c)great taste black, 2022\ncompiler build 0.9.2\n";
         line +=3;
     }
 
