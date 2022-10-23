@@ -15,7 +15,6 @@
 #define UNTITLED7_TERMINAL_H
 #define so sizeof(string)
 #define line local->line
-#include <windows.h>
 
  class Cmd {
     int * rmv;
