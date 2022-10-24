@@ -102,7 +102,7 @@ public:
         int b = numsys->binaryToDecimal(memory->R);
         int temp;
         if (a*b>255){
-            temp = (a*b)%255;
+            temp = (a*b)%256;
             memory->Z = 1;
         }
         else{
