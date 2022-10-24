@@ -5,7 +5,7 @@ This version of the project (console, command prompt) is developed by Rufelle Em
 The Relatively Simpler CPU is a continuous development and will continue its development until the forseeable future.
 
 ## Installation Kit
-The installation kit is available for download in this link: https://drive.google.com/file/d/1SBfNlgwUO7gqYhcnlomD8TaGZOdaczu3/view?usp=sharing
+The installation kit is available for download in this link: https://drive.google.com/file/d/1LvG1L4xk2e4WKfBNz93E3GnNAyXPcoYr/view?usp=sharing
 
 ## Educator's License
 This project is free to modify, download, and reproduce as long as the proper credits are still given to Rufelle Emmanuel Pactol, along with Great Taste Black. This free-to-use license only extends to education-related use cases only. Any commercial reproduction of this software is prohibited. 
