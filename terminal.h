@@ -67,6 +67,18 @@ public:
                     temp = 0;
                     continue;
                 }
+                bool no = false;
+                int length = strlen(ctemp.c_str());
+                for (int i=0; i<length; i++){
+                    if (!isdigit(ctemp[i])){
+                        std::cout << "in line " << line << " input \"" << ctemp << "\" is not a valid number.\n";
+                        no = true;
+                        break;
+                    }
+                }
+                if (no){
+                    continue;
+                }
 
             }
 
