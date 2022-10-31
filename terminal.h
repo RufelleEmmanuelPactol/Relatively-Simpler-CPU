@@ -48,7 +48,7 @@ public:
         int temp;
         std::string  ctemp;
         do{
-            std::cout << ">>>\t";
+            std::cout << ">>> ";
 			std::cin >> command;
             char c = getchar();
             if (c=='\n'){
